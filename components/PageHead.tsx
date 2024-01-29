@@ -3,22 +3,23 @@ import Head from 'next/head'
 
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
-import { getSocialImageUrl } from '@/lib/get-social-image-url'
+
+// import { getSocialImageUrl } from '@/lib/get-social-image-url'
 
 export const PageHead: React.FC<
   types.PageProps & {
     title?: string
     description?: string
-    image?: string
+    //image?: string
     url?: string
   }
-> = ({ site, title, description, pageId, image, url }) => {
+> = ({ site, title, description, pageId, url }) => {
   const rssFeedUrl = `${config.host}/feed`
 
   title = title ?? site?.name
   description = description ?? site?.description
 
-  const socialImageUrl = getSocialImageUrl(pageId) || image
+  //const socialImageUrl = getSocialImageUrl(pageId) || image
 
   return (
     <Head>
@@ -30,13 +31,20 @@ export const PageHead: React.FC<
       />
 
       <meta name='apple-mobile-web-app-capable' content='yes' />
-      <meta
-        name='apple-mobile-web-app-status-bar-style'
-        content='black'
-      />
+      <meta name='apple-mobile-web-app-status-bar-style' content='black' />
 
-      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fefffe" key="theme-color-light"/>
-      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2d3439" key="theme-color-dark"/>
+      <meta
+        name='theme-color'
+        media='(prefers-color-scheme: light)'
+        content='#fefffe'
+        key='theme-color-light'
+      />
+      <meta
+        name='theme-color'
+        media='(prefers-color-scheme: dark)'
+        content='#2d3439'
+        key='theme-color-dark'
+      />
 
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='website' />
@@ -60,7 +68,7 @@ export const PageHead: React.FC<
         </>
       )}
 
-      {socialImageUrl ? (
+      {/* {socialImageUrl ? (
         <>
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:image' content={socialImageUrl} />
@@ -68,7 +76,7 @@ export const PageHead: React.FC<
         </>
       ) : (
         <meta name='twitter:card' content='summary' />
-      )}
+      )} */}
 
       {url && (
         <>

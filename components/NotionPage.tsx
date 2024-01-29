@@ -249,7 +249,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         site={site}
         title={title}
         description={socialDescription}
-        image={socialImage}
+        //image={socialImage}
         url={canonicalPageUrl}
       />
 
