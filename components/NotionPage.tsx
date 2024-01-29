@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import cs from 'classnames'
-import { PageBlock } from 'notion-types'
+// import { PageBlock } from 'notion-types'
 import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
 import BodyClassName from 'react-body-classname'
 import { NotionRenderer } from 'react-notion-x'
@@ -231,12 +231,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  const socialImage = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
-    block
-  )
+  // const socialImage = mapImageUrl(
+  //   getPageProperty<string>('Social Image', block, recordMap) ||
+  //     (block as PageBlock).format?.page_cover ||
+  //     config.defaultPageCover,
+  //   block
+  // )
 
   const socialDescription =
     getPageProperty<string>('Description', block, recordMap) ||
