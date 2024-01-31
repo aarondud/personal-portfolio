@@ -3,6 +3,8 @@ import { NextRequest } from 'next/server'
 
 import { ImageResponse } from '@vercel/og'
 
+// import RobotoRegular from 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
+// import RobotoMedium from 'https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap'
 import { api, apiHost, rootNotionPageId } from '@/lib/config'
 import { NotionPageInfo } from '@/lib/types'
 
@@ -10,17 +12,17 @@ import { NotionPageInfo } from '@/lib/types'
 //   new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
 // ).then((res) => res.arrayBuffer())
 
-// const interBoldFontP = fetch(
-//   new URL('../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
+const interBoldFontP = fetch(
+  new URL('../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
+).then((res) => res.arrayBuffer())
+
+// const robotoRegularFontP = fetch(
+//   'https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxP.ttf'
 // ).then((res) => res.arrayBuffer())
 
-const robotoRegularFontP = fetch(
-  'https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxP.ttf'
-).then((res) => res.arrayBuffer())
-
-const robotoMediumFontP = fetch(
-  'https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmEU9fBBc9.ttf'
-).then((res) => res.arrayBuffer())
+// const robotoMediumFontP = fetch(
+//   'https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmEU9fBBc9.ttf'
+// ).then((res) => res.arrayBuffer())
 
 export const config = {
   runtime: 'experimental-edge'
@@ -47,8 +49,8 @@ export default async function OGImage(req: NextRequest) {
   console.log(pageInfo)
 
   const [interRegularFont, interBoldFont] = await Promise.all([
-    robotoRegularFontP,
-    robotoMediumFontP
+    interBoldFontP,
+    interBoldFontP
   ])
 
   return new ImageResponse(
