@@ -9,12 +9,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Aaron Dudley',
-  domain: 'temp',
+  name: "Aaron Dudley's Portfolio",
+  domain: 'aarondudley.vercel.app',
   author: 'Aaron Dudley',
 
   // open graph metadata (optional)
-  description: "Aaron Dudley's personal portfolio & website",
+  description: "🌸 Aaron Dudley's personal portfolio and website.",
 
   // social usernames (optional)
   //twitter: 'transitive_bs',
@@ -26,7 +26,7 @@ export default siteConfig({
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
-  defaultPageIcon: null, 
+  defaultPageIcon: null,
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
@@ -64,6 +64,6 @@ export default siteConfig({
     {
       title: 'Experience',
       pageId: '7123ac93d7de4dbba26ea3fe797fd0bc?pvs=4'
-    },
+    }
   ]
 })

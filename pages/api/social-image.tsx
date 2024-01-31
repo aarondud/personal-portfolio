@@ -6,12 +6,20 @@ import { ImageResponse } from '@vercel/og'
 import { api, apiHost, rootNotionPageId } from '@/lib/config'
 import { NotionPageInfo } from '@/lib/types'
 
-const interRegularFontP = fetch(
-  new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
+// const interRegularFontP = fetch(
+//   new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
+// ).then((res) => res.arrayBuffer())
+
+// const interBoldFontP = fetch(
+//   new URL('../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
+// ).then((res) => res.arrayBuffer())
+
+const robotoRegularFontP = fetch(
+  'https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxP.ttf'
 ).then((res) => res.arrayBuffer())
 
-const interBoldFontP = fetch(
-  new URL('../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
+const robotoMediumFontP = fetch(
+  'https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmEU9fBBc9.ttf'
 ).then((res) => res.arrayBuffer())
 
 export const config = {
@@ -39,8 +47,8 @@ export default async function OGImage(req: NextRequest) {
   console.log(pageInfo)
 
   const [interRegularFont, interBoldFont] = await Promise.all([
-    interRegularFontP,
-    interBoldFontP
+    robotoRegularFontP,
+    robotoMediumFontP
   ])
 
   return new ImageResponse(
