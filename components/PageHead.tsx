@@ -24,7 +24,7 @@ export function PageHead({
   title = title ?? site?.name
   description = description ?? site?.description
 
-  const socialImageUrl = getSocialImageUrl(pageId) || image
+  //const socialImageUrl = getSocialImageUrl(pageId) || image
 
   return (
     <Head>
@@ -36,6 +36,7 @@ export function PageHead({
       />
 
       <meta name='mobile-web-app-capable' content='yes' />
+
       <meta name='apple-mobile-web-app-status-bar-style' content='black' />
 
       <meta
@@ -73,7 +74,7 @@ export function PageHead({
         </>
       )}
 
-      {socialImageUrl ? (
+      {/* {socialImageUrl ? (
         <>
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:image' content={socialImageUrl} />
@@ -81,7 +82,7 @@ export function PageHead({
         </>
       ) : (
         <meta name='twitter:card' content='summary' />
-      )}
+      )} */}
 
       {url && (
         <>
