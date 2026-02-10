@@ -10,7 +10,6 @@ import RSS from 'rss'
 
 import * as config from '@/lib/config'
 import { getSiteMap } from '@/lib/get-site-map'
-// import { getSocialImageUrl } from '@/lib/get-social-image-url'
 import { getCanonicalPageUrl } from '@/lib/map-page-url'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -68,9 +67,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       : publishedTime
         ? new Date(publishedTime)
         : new Date()
-    const socialImageUrl = getSocialImageUrl(pageId)
-
-
     feed.item({
       title,
       url,
