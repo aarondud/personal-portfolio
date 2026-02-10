@@ -16,16 +16,37 @@ import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
 import { type NotionPageInfo, type PageError } from '@/lib/types'
 
-export const runtime = 'edge'
+// import RobotoRegular from 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
+// import RobotoMedium from 'https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap'
+import { api, apiHost, rootNotionPageId } from '@/lib/config'
+import { NotionPageInfo } from '@/lib/types'
 
-export default async function OGImage(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { searchParams } = new URL(req.url!)
-  const pageId = parsePageId(
-    searchParams.get('id') || libConfig.rootNotionPageId
-  )
+// const interRegularFontP = fetch(
+//   new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
+// ).then((res) => res.arrayBuffer())
+
+const interBoldFontP = fetch(
+  new URL('../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
+).then((res) => res.arrayBuffer())
+
+// const robotoRegularFontP = fetch(
+//   'https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxP.ttf'
+// ).then((res) => res.arrayBuffer())
+
+// const robotoMediumFontP = fetch(
+//   'https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmEU9fBBc9.ttf'
+// ).then((res) => res.arrayBuffer())
+
+export const config = {
+  runtime: 'experimental-edge'
+}
+
+// TODO: shift to this: export const runtime = 'edge'
+
+export default async function OGImage(req: NextRequest) {
+  const { searchParams } = new URL(req.url)
+  const pageId = searchParams.get('id') || rootNotionPageId
+
   if (!pageId) {
     return new Response('Invalid notion page id', { status: 400 })
   }
@@ -38,6 +59,12 @@ export default async function OGImage(
   }
   const pageInfo = pageInfoOrError.data
   console.log(pageInfo)
+
+
+  const [interRegularFont, interBoldFont] = await Promise.all([
+    interBoldFontP,
+    interBoldFontP
+  ])
 
   return new ImageResponse(
     (
